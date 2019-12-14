@@ -10,8 +10,15 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
-    
-};
+const twoSum = (nums, target) => {
+  let res = []
+  nums.forEach((a, i) => {
+    nums.slice(i + 1).forEach((b, k) => {
+      if (a + b === target) {
+        res = [i, i + k + 1]
+      }
+    }) 
+  })
+  return res
+}
 // @lc code=end
-
