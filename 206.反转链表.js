@@ -17,6 +17,7 @@
  * @return {ListNode}
  */
 var reverseList = function() {
+  if (!head || !head.next) return head;
   let cur = head
   let prev = null
   while (cur) {
