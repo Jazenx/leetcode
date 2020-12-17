@@ -46,4 +46,6 @@ var moveZeroes = function (nums) {
     }
   }
 }
+
+var moveZeroes = (nums) => nums.sort((a, b) => b === 0 ? -1: 0)
 // @lc code=end
