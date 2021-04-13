@@ -109,3 +109,56 @@ function removeCache(cache, keys, key) {
  */
 // @lc code=end
 
+
+
+// map 
+var LRUCache = function(capacity) {
+  this.cache = new Map()
+  this.capacity = capacity
+};
+
+
+LRUCache.prototype.get = function(key) {
+  if(this.cache.has(key)) {
+    let temp = this.cache.get(key)
+    this.cache.delete(key)
+    this.cache.set(key, temp)
+    return temp
+  }
+  return -1
+};
+
+LRUCache.prototype.put = function(key, value) {
+  if(this.cache.has(key)) {
+    this.cache.delete(key)
+  } else if(this.cache.size>= this.capacity) {
+    // 缓存超过最大值，则移除最近没有使用的
+    this.cache.delete(this.cache.keys().next().value)
+  }
+  this.cache.set(key, value)
+};
+
+// 哈希表和双向链表
+// class ListNode {
+//   constructor(key, value) {
+//     this.key = key
+//     this.value = value
+//     this.pre = null
+//     this.next = null 
+//   }
+// }
+
+// class DoubleLinkList {
+//   constructor() {
+//     this.head = new ListNode()
+//     this.tail = new ListNode()
+//     this.head.next = this.tail
+//     this.tail.pre = this.head
+//   }
+
+//   add(newNode){
+//     newNode.next = this.head.next
+//     this.head.next.pre = newNode
+//     this.head.next = 
+//   }
+// }

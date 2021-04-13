@@ -24,3 +24,17 @@ var lengthOfLongestSubstring = function (s) {
   return max
 }
 // @lc code=end
+
+// practise1
+
+const lengthOfLongestSubstring = (s) => {
+  let max = 0
+  for (let i = 0, j = 0; j < s.length; j += 1) {
+    const index = s.substring(i, j).indexOf(s[j])
+    if (index !== -1) {
+      i = i + index +1
+    }
+    max = Math.max(max, j - i + 1)
+  }
+  return max
+}
